@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import productsData from "./data/products.json";
-import { supabase } from "./supabase";
 import { Product } from "./types";
 import ProductCard from "./ProductCard";
 export default function Home() {
@@ -27,23 +26,6 @@ useEffect(() => {
  const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   const [category, setCategory] = useState("all");
-useEffect(() => {
-  async function loadProducts() {
-    const { data, error } = await supabase!
-      .from("products")
-      .select("*");
-
-  if (data && data.length > 0) {
-  setProducts(data as Product[]);
-}
-
-if (error) {
-  console.error(error);
-}
-  }
-
-  loadProducts();
-}, []);
   const totalProducts = products.length;
   const winnerProducts = products.filter((p: Product) => p.score >= 85).length;
   const trendingProducts = products.filter((p: Product) => p.growth >= 60).length;
