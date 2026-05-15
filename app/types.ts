@@ -1,0 +1,20 @@
+export type Product = {
+  id: string;
+  name: string;
+  category: string;
+  subCategory: string;
+  priceRange: string;
+  revenue: number;
+  growth: number;
+  views: number;
+  score: number;
+  trendLevel: string;
+  competition: string;
+  marginPotential: string;
+  targetAudience: string[];
+  description: string;
+  supplier: string;
+  source: string;
+  link: string;
+  image: string;
+};
