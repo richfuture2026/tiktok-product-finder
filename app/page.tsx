@@ -1,5 +1,5 @@
 "use client";
-
+import { supabase } from "./supabase";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import productsData from "./data/products.json";
@@ -21,7 +21,24 @@ useEffect(() => {
 useEffect(() => {
   localStorage.setItem("favorites", JSON.stringify(favorites));
 }, [favorites]); 
+useEffect(() => {
+  async function loadProducts() {
+    const { data, error } = await supabase
+      .from("products")
+      .select("*");
 
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    if (data) {
+      setProducts(data as Product[]);
+    }
+  }
+
+  loadProducts();
+}, []);
  const [showFavorites, setShowFavorites] = useState(false); 
  const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
