@@ -29,7 +29,7 @@ useEffect(() => {
   const [category, setCategory] = useState("all");
 useEffect(() => {
   async function loadProducts() {
-    const { data, error } = await supabase
+    const { data, error } = await supabase!
       .from("products")
       .select("*");
 
