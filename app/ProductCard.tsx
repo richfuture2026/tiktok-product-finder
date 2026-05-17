@@ -78,17 +78,18 @@ export default function ProductCard({ product, onClick }: Props) {
         <span style={badgeStyle}>🛒 {product.priceRange}</span>
       </div>
 
-      <a
-        href={product.link}
-        target="_blank"
-        style={{
-          color: "#67e8f9",
-          textDecoration: "none",
-          fontWeight: "bold",
-        }}
-      >
-        Produkt ansehen 🚀
-      </a>
+     <a
+  href={product.link}
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{
+    color: "#67e8f9",
+    textDecoration: "none",
+    fontWeight: "bold",
+  }}
+>
+  Produkt ansehen 🚀
+</a>
 
       <p>Einnahmen: €{product.revenue.toLocaleString("de-DE")}</p>
       <p>Wachstum: +{product.growth}%</p>
