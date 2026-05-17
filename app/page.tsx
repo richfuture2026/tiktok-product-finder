@@ -1,7 +1,6 @@
 "use client";
 import { supabase } from "./supabase";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import productsData from "./data/products.json";
 import { Product } from "./types";
 import ProductCard from "./ProductCard";
@@ -24,7 +23,8 @@ useEffect(() => {
     const { data, error } = await supabase
       .from("products")
       .select("*");
-
+console.log("SUPABASE DATA:", data);
+console.log("SUPABASE ERROR:", error);
     if (error) {
       console.error(error);
       return;
@@ -207,7 +207,18 @@ useEffect(() => {
               </p>
             )}
 
-            <Image src={product.image} alt={product.name} width={300} height={180} style={{ borderRadius: "12px", width: "100%", height: "200px", objectFit: "cover" }} />
+           <img
+  src={product.image?.trim() || "/images/placeholder.jpg"}
+  alt={product.name}
+  width={300}
+  height={180}
+  style={{
+    borderRadius: "12px",
+    width: "100%",
+    height: "200px",
+    objectFit: "cover"
+  }}
+/>
 
             <h2>{product.name}</h2>
             <p>{product.description}</p>
@@ -420,7 +431,9 @@ function StatCard({ label, value }: any) {
   return (
     <div style={{ background: "#1e293b", color: "white", padding: "20px", borderRadius: "18px" }}>
       <p style={{ color: "#94a3b8", margin: 0 }}>{label}</p>
-      <h2 style={{ margin: "8px 0 0", fontSize: "32px" }}>{value}</h2>
+      <h2 style={{ margin: "8px 0 0", fontSize: "32px" }}>
+  {Number.isFinite(Number(value)) ? value : 0}
+</h2>
     </div>
   );
 }
