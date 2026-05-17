@@ -6,9 +6,7 @@ import productsData from "./data/products.json";
 import { Product } from "./types";
 import ProductCard from "./ProductCard";
 export default function Home() {
-  const [products, setProducts] = useState<Product[]>(
-  productsData as Product[]
-);
+ const [products, setProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
  const [favorites, setFavorites] = useState<string[]>([]);
 useEffect(() => {
