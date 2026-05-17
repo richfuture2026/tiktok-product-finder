@@ -308,7 +308,7 @@ console.log("SUPABASE ERROR:", error);
     <div className="grid md:grid-cols-2 gap-8">
 
       <div>
-        <Image
+        <img
           src={selectedProduct.image}
           alt={selectedProduct.name}
           width={500}
