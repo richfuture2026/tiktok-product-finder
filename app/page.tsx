@@ -156,7 +156,7 @@ console.log("SUPABASE ERROR:", error);
   onChange={(e) => setSearch(e.target.value)}
   className="w-full max-w-xl mb-8 px-5 py-3 rounded-2xl bg-zinc-800 text-white placeholder-zinc-400 outline-none border border-zinc-700 focus:border-cyan-400"
 />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "16px", marginBottom: "30px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px", marginBottom: "30px" }}>
         <StatCard label="Produkte" value={totalProducts} />
         <StatCard label="Gewinner" value={winnerProducts} />
         <StatCard label="Trending" value={trendingProducts} />
@@ -196,7 +196,12 @@ console.log("SUPABASE ERROR:", error);
         ))}
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+<div style={{
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 320px))",
+  justifyContent: "center",
+  gap: "20px"
+}}>
         {filteredProducts.map((product: any) => (
           <div key={product.id} onClick={() => setSelectedProduct(product)} style={{ background: "#1e293b", padding: "20px", borderRadius: "20px", cursor: "pointer", color: "white" }}>
             <p style={{ color: "#67e8f9", fontWeight: "bold" }}>{product.category}</p>
@@ -214,8 +219,8 @@ console.log("SUPABASE ERROR:", error);
   height={180}
   style={{
     borderRadius: "12px",
-    width: "100%",
-    height: "200px",
+    width: "320px",
+    height: "260px",
     objectFit: "cover"
   }}
 />
